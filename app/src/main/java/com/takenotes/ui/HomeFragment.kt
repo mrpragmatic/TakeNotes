@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.findNavController
 import com.takenotes.R
 import com.takenotes.databinding.FragmentHomeBinding
 
@@ -43,7 +44,11 @@ class HomeFragment : Fragment(), View.OnClickListener{
     override fun onClick(v: View?) {
         if (v != null && _binding != null) {
             if (v == binding.floatingActionButton) {
+                val action =
+                    HomeFragmentDirections
+                        .actionHomeFragmentToCreateNoteFragment()
                 Toast.makeText(requireContext(),"Clicked on FAB",Toast.LENGTH_SHORT).show()
+                v.findNavController().navigate(action)
             }
         }
     }
